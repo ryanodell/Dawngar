@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using DawngarCore;
+using Gtk;
 using System;
 
 namespace Dawngar;
@@ -25,7 +26,7 @@ public class MainGame : Game
     protected override void Initialize()
     {
         // TODO: Add your initialization logic here
-        
+
         base.Initialize();
     }
 
@@ -36,7 +37,8 @@ public class MainGame : Game
         string baseDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
         string filePath = Path.Combine(baseDirectory, relativePath);
 
-        using(var stream = new FileStream(filePath, FileMode.Open)) {
+        using (var stream = new FileStream(filePath, FileMode.Open))
+        {
             _texture = Texture2D.FromStream(GraphicsDevice, stream);
         }
         _camera = new Camera2D(GraphicsDevice);
@@ -46,13 +48,18 @@ public class MainGame : Game
 
     protected override void Update(GameTime gameTime)
     {
-        if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape)) 
+        InputManager.Instance.Update(gameTime);
+        if (Keyboard.GetState().IsKeyDown(Keys.Escape))
         {
             Exit();
         }
 
-        
-        
+
+        if (InputManager.Instance.IsKeyPressed(Keys.A))
+        {
+            
+        }
+
 
         base.Update(gameTime);
     }
