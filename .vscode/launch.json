@@ -1,0 +1,33 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Game",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-game",
+            "program": "${workspaceFolder}/DawngarGame/bin/Debug/net6.0/Dawngar.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+        {
+            "name": "Console",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-console",
+            "program": "${workspaceFolder}/DawngarConsole/bin/Debug/net6.0/DawngarConsole.dll",
+            // "args": ["merge"],
+            "args": ["twoframe"],
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+        {
+            "name": ".NET Core Attach",
+            "type": "coreclr",
+            "request": "attach"
+        }
+    ]
+}
