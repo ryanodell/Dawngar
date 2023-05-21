@@ -39,15 +39,20 @@ public class MainGame : Game
         using(var stream = new FileStream(filePath, FileMode.Open)) {
             _texture = Texture2D.FromStream(GraphicsDevice, stream);
         }
-        // TODO: use this.Content to load your game content here
+        _camera = new Camera2D(GraphicsDevice);
+        _camera.LookAt(Vector2.Zero);
+        _camera.Zoom = 3f;
     }
 
     protected override void Update(GameTime gameTime)
     {
-        if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+        if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape)) 
+        {
             Exit();
+        }
 
-        // TODO: Add your update logic here
+        
+        
 
         base.Update(gameTime);
     }
@@ -57,7 +62,7 @@ public class MainGame : Game
         GraphicsDevice.Clear(Color.CornflowerBlue);
 
         // TODO: Add your drawing code here
-        _spriteBatch.Begin();
+        _spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, null, _camera.GetViewMatrix());
         _spriteBatch.Draw(_texture, Vector2.Zero, Color.White);
         _spriteBatch.End();
 
