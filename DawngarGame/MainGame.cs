@@ -4,7 +4,6 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using DawngarCore;
-using System;
 
 namespace Dawngar;
 
@@ -14,11 +13,12 @@ public class MainGame : Game
     private SpriteBatch _spriteBatch;
     private Texture2D _texture;
     private Camera2D _camera;
+    private SpriteFont _spriteFont;
 
     public MainGame()
     {
         _graphics = new GraphicsDeviceManager(this);
-        Content.RootDirectory = "Content";
+        Content.RootDirectory = "Assets";
         IsMouseVisible = true;
     }
 
@@ -43,6 +43,7 @@ public class MainGame : Game
         _camera = new Camera2D(GraphicsDevice);
         _camera.LookAt(Vector2.Zero);
         _camera.Zoom = 3f;
+        _spriteFont = Content.Load<SpriteFont>("../Fonts/SDS_8x8");
     }
 
     protected override void Update(GameTime gameTime)
@@ -70,6 +71,7 @@ public class MainGame : Game
         // TODO: Add your drawing code here
         _spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, null, _camera.GetViewMatrix());
         _spriteBatch.Draw(_texture, Vector2.Zero, Color.White);
+        _spriteBatch.DrawString(_spriteFont, "fudge", Vector2.Zero, Color.Red);
         _spriteBatch.End();
 
         base.Draw(gameTime);
