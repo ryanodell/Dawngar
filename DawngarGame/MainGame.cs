@@ -24,41 +24,44 @@ public class MainGame : Game
 
     protected override void Initialize()
     {
-        // TODO: Add your initialization logic here
-
-        base.Initialize();
+        Globals.GameRef =  this;
+        _graphics.PreferredBackBufferWidth = 1280;
+        _graphics.PreferredBackBufferHeight = 720;
+        _graphics.ApplyChanges();
     }
 
     protected override void LoadContent()
     {
         _spriteBatch = new SpriteBatch(GraphicsDevice);
-        string relativePath = "Characters/Avian.png";
-        string baseDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-        string filePath = Path.Combine(baseDirectory, relativePath);
+        // string relativePath = "Characters/Avian.png";
+        // string baseDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+        // string filePath = Path.Combine(baseDirectory, relativePath);
 
-        using (var stream = new FileStream(filePath, FileMode.Open))
-        {
-            _texture = Texture2D.FromStream(GraphicsDevice, stream);
-        }
-        _camera = new Camera2D(GraphicsDevice);
-        _camera.LookAt(Vector2.Zero);
-        _camera.Zoom = 3f;
-        _spriteFont = Content.Load<SpriteFont>("../Fonts/SDS_8x8");
+        // using (var stream = new FileStream(filePath, FileMode.Open))
+        // {
+        //     _texture = Texture2D.FromStream(GraphicsDevice, stream);
+        // }
+        // _camera = new Camera2D(GraphicsDevice);
+        // _camera.LookAt(Vector2.Zero);
+        // _camera.Zoom = 3f;
+        // _spriteFont = Content.Load<SpriteFont>("../Fonts/SDS_8x8");
+        ScreenManager.Instance.ChangeScreen(new TempEditor());
     }
 
     protected override void Update(GameTime gameTime)
     {
         InputManager.Instance.Update(gameTime);
-        if (Keyboard.GetState().IsKeyDown(Keys.Escape))
-        {
-            Exit();
-        }
+        ScreenManager.Instance.Update(gameTime);
+        // if (Keyboard.GetState().IsKeyDown(Keys.Escape))
+        // {
+        //     Exit();
+        // }
 
 
-        if (InputManager.Instance.IsKeyPressed(Keys.A))
-        {
+        // if (InputManager.Instance.IsKeyPressed(Keys.A))
+        // {
             
-        }
+        // }
 
 
         base.Update(gameTime);
@@ -68,11 +71,12 @@ public class MainGame : Game
     {
         GraphicsDevice.Clear(Color.CornflowerBlue);
 
-        // TODO: Add your drawing code here
-        _spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, null, _camera.GetViewMatrix());
-        _spriteBatch.Draw(_texture, Vector2.Zero, Color.White);
-        _spriteBatch.DrawString(_spriteFont, "fudge", Vector2.Zero, Color.Red);
-        _spriteBatch.End();
+        ScreenManager.Instance.Draw(_spriteBatch,  gameTime);
+
+        // _spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, null, _camera.GetViewMatrix());
+        // _spriteBatch.Draw(_texture, Vector2.Zero, Color.White);
+        // _spriteBatch.DrawString(_spriteFont, "fudge", Vector2.Zero, Color.Red);
+        // _spriteBatch.End();
 
         base.Draw(gameTime);
     }
