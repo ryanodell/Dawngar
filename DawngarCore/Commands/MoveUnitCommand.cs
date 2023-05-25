@@ -7,12 +7,11 @@ public class MoveUnitCommand : ICommand
     private Entity _entity;
     public MoveUnitCommand(Entity entity)
     {
-        
+        _entity =  entity;
     }
     public void Execute()
     {
         
-        throw new NotImplementedException();
     }
 
     public void Undo()
