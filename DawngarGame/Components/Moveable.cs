@@ -1,3 +1,3 @@
 using Microsoft.Xna.Framework;
 namespace Dawngar.Components;
-public readonly struct Moveable { }
+public readonly record struct Moveable { }
