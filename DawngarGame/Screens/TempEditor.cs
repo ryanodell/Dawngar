@@ -9,19 +9,19 @@ namespace Dawngar;
 public class TempEditor : ScreenBase
 {
     private World _world;
-    private Entity _entityTest;
+    private Entity _someEntity;
 
     public override void LoadContent()
     {
         _world = new World();
-        _entityTest = _world.CreateEntity();
-        _entityTest.AddComponent<Transform>(new Transform 
+        _someEntity = _world.CreateEntity();
+        _someEntity.AddComponent<Transform>(new Transform 
         { 
             Position = Vector2.Zero, 
             Color = Color.White, 
             SourceRect = new Rectangle(2, 0, 16, 16) 
         });
-        _entityTest.AddComponent<Moveable>();
+        _someEntity.AddComponent<Moveable>();
     }
 
     public override void UnloadContent()
@@ -32,13 +32,13 @@ public class TempEditor : ScreenBase
     public override void Update(GameTime gameTime)
     {
         _world.Update(gameTime);
-        if(_entityTest.Has<Moveable>()) 
+        if(_someEntity.Has<Moveable>()) 
         {
             var test = "";
         }
-        if(_entityTest.Has<Transform>()) 
+        if(_someEntity.Has<Transform>()) 
         {
-            var trans = _entityTest.GetComponent<Transform>();
+            var trans = _someEntity.GetComponent<Transform>();
         }
     }
 
