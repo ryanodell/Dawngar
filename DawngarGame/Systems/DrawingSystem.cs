@@ -13,7 +13,7 @@ public class DrawingSystem : AComponentSystem<GameTime, DrawInfo>
     private SpriteBatch _spriteBatch;
     private Camera2D _camera;
 
-    public DrawingSystem(SpriteBatch spriteBatch, World world, Camera2D camera) : base(world)
+    public DrawingSystem(World world, SpriteBatch spriteBatch, Camera2D camera) : base(world)
     {
         _spriteBatch = spriteBatch;
         _camera = camera;
