@@ -9,11 +9,12 @@ public class GameSystem : ISystem<GameTime>
 
     public void Dispose()
     {
-        throw new System.NotImplementedException();
+        
     }
 
-    public void Update(GameTime state)
+    
+
+    public void Update(GameTime gameTime)
     {
-        throw new System.NotImplementedException();
     }
 }
