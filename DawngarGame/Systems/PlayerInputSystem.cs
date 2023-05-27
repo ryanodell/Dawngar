@@ -8,19 +8,19 @@ using Microsoft.Xna.Framework.Input;
 namespace Dawngar;
 
 [With(typeof(PlayerInput))]
-public class PlayerSystem : AEntitySetSystem<GameTime>
+public class PlayerInputSystem : AEntitySetSystem<GameTime>
 {
-    public PlayerSystem(World world) : base(world)
+    public PlayerInputSystem(World world) : base(world)
     {
 
     }
 
     protected override void Update(GameTime state, in Entity entity)
     {
-        ref Position position = ref entity.Get<Position>();
+        ref DrawInfo drawInfo = ref entity.Get<DrawInfo>();
         if(InputManager.Instance.IsKeyPressed(Keys.A)) 
         {
-
+            drawInfo.Position.X = drawInfo.Position.X + 1;
         }
     }
 }

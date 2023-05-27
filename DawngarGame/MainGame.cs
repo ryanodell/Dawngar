@@ -10,7 +10,7 @@ namespace Dawngar;
 public class MainGame : Game
 {
     private GraphicsDeviceManager _graphics;
-    private SpriteBatch _spriteBatch;
+    public SpriteBatch SpriteBatch;
     private Texture2D _texture;
     private Camera2D _camera;
     private SpriteFont _spriteFont;
@@ -33,7 +33,7 @@ public class MainGame : Game
 
     protected override void LoadContent()
     {
-        _spriteBatch = new SpriteBatch(GraphicsDevice);
+        SpriteBatch = new SpriteBatch(GraphicsDevice);
         // string relativePath = "Characters/Avian.png";
         // string baseDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
         // string filePath = Path.Combine(baseDirectory, relativePath);
@@ -72,7 +72,7 @@ public class MainGame : Game
     {
         GraphicsDevice.Clear(Color.CornflowerBlue);
 
-        ScreenManager.Instance.Draw(_spriteBatch,  gameTime);
+        ScreenManager.Instance.Draw(SpriteBatch,  gameTime);
 
         // _spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, null, _camera.GetViewMatrix());
         // _spriteBatch.Draw(_texture, Vector2.Zero, Color.White);
