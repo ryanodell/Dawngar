@@ -35,7 +35,7 @@ public class TempEditor : ScreenBase
         _player.Set<PlayerInput>();
         _player.Set<DrawInfo>(new DrawInfo{ Position = Vector2.Zero, Color = Color.White, SourceRect = new Rectangle(0, 0, 16, 16), Texture = _texture });
         _system =  new SequentialSystem<GameTime>(
-            new PlayerInputSystem(_world)           
+            new PlayerInputSystem(_world)
         );
         _drawingSystem = new DrawingSystem(Globals.GameRef.SpriteBatch, _world, _camera);
     }

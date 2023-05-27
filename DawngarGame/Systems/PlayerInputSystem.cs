@@ -18,9 +18,9 @@ public class PlayerInputSystem : AEntitySetSystem<GameTime>
     protected override void Update(GameTime state, in Entity entity)
     {
         ref DrawInfo drawInfo = ref entity.Get<DrawInfo>();
-        if(InputManager.Instance.IsKeyPressed(Keys.A)) 
+        if(InputManager.Instance.IsKeyDown(Keys.Right)) 
         {
-            drawInfo.Position.X = drawInfo.Position.X + 1;
+            drawInfo.Position.X += 8;
         }
     }
 }
