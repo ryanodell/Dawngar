@@ -1,4 +1,5 @@
 using System;
+using Dawngar.Commands;
 using Dawngar.Components;
 using DefaultEcs;
 using DefaultEcs.System;
@@ -18,9 +19,21 @@ public class PlayerInputSystem : AEntitySetSystem<GameTime>
     protected override void Update(GameTime state, in Entity entity)
     {
         ref DrawInfo drawInfo = ref entity.Get<DrawInfo>();
-        if(InputManager.Instance.IsKeyDown(Keys.Right)) 
+        if(InputManager.Instance.IsKeyPressed(Keys.D))
         {
-            drawInfo.Position.X += 8;
+            World.Publish<PlayerMoveCommand>(new(eMoveDirection.EAST));
+        }
+        else if(InputManager.Instance.IsKeyPressed(Keys.A))
+        {
+            World.Publish<PlayerMoveCommand>(new(eMoveDirection.WEST));
+        }
+        else if(InputManager.Instance.IsKeyPressed(Keys.W))
+        {
+            World.Publish<PlayerMoveCommand>(new(eMoveDirection.NORTH));
+        }
+        else if(InputManager.Instance.IsKeyPressed(Keys.S))
+        {
+            World.Publish<PlayerMoveCommand>(new(eMoveDirection.SOUTH));
         }
     }
 }
