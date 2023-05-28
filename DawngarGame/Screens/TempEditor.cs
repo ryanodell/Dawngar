@@ -3,11 +3,8 @@ using Dawngar.Components;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using DefaultEcs.System;
-using System.Reflection;
-using System.IO;
 using DawngarCore;
 using Dawngar.Systems;
-using System.Collections.Generic;
 using Dawngar.Loaders;
 using DawngarCore.Commands;
 using DefaultEcs.Resource;
@@ -18,7 +15,6 @@ public class TempEditor : ScreenBase
 {
     World _world;
     Entity _player;
-    //List<Entity> _overworldNpcs = new List<Entity>();
     TextureResourceManager _textureResourceManager;
     private ISystem<GameTime> _system;
     private ISystem<GameTime> _drawingSystem;
@@ -57,6 +53,7 @@ public class TempEditor : ScreenBase
         _system =  new SequentialSystem<GameTime>(
             new GameSystem(_world),
             new PlayerInputSystem(_world),
+            new AnimationSystem(_world),
             new OverworldNpcSystem(_world)
         );
         _drawingSystem = new DrawingSystem(_world, Globals.GameRef.SpriteBatch, _camera);
@@ -72,7 +69,6 @@ public class TempEditor : ScreenBase
 
     public override void Update(GameTime gameTime)
     {
-        // _textureResourceManager.Manage(_world);
         _system.Update(gameTime);
     }
 
