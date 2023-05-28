@@ -11,6 +11,7 @@ namespace Dawngar.Systems;
 public class OverworldNpcSystem : AEntitySetSystem<GameTime>
 {
     private static Random _rand;
+    private readonly float _speed = 3.5f;
     public OverworldNpcSystem(World world) : base(world) 
     {
         _rand = new Random();
@@ -22,19 +23,19 @@ public class OverworldNpcSystem : AEntitySetSystem<GameTime>
         ref DrawInfo drawInfo = ref entity.Get<DrawInfo>();
         if(direction == 1) 
         {
-            drawInfo.Position.X  += 0.5f;
+            drawInfo.Position.X  += _speed;
         }
         if(direction == 2) 
         {
-            drawInfo.Position.X  -= 0.5f;
+            drawInfo.Position.X  -= _speed;
         }
         if(direction == 3) 
         {
-            drawInfo.Position.Y  += 0.5f;
+            drawInfo.Position.Y  += _speed;
         }
         if(direction == 4) 
         {
-            drawInfo.Position.Y  -= 0.5f;
+            drawInfo.Position.Y  -= _speed;
         }
     }
 

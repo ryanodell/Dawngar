@@ -37,7 +37,6 @@ public class TempEditor : ScreenBase
         });
         
         _player.Set(ManagedResource<Texture2D>.Create("Characters/Player.png"));
-
         for(int i = 0; i < 100; i++) 
         {
             var npc = _world.CreateEntity();
