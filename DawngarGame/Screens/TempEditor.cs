@@ -34,9 +34,9 @@ public class TempEditor : ScreenBase
             Position = Vector2.Zero, 
             Color = Color.White, 
             SourceRect = new Rectangle(0, 0, 16, 16)
-        });
+        });        
+        _player.Set(ManagedResource<Texture2D>.Create(Textures.Characters.Dog));
         
-        _player.Set(ManagedResource<Texture2D>.Create("Characters/Player.png"));
         for(int i = 0; i < 100; i++) 
         {
             var npc = _world.CreateEntity();
@@ -47,7 +47,7 @@ public class TempEditor : ScreenBase
                 Color = Color.White,
                 SourceRect = new Rectangle(16, 16, 16, 16)
             });
-            npc.Set(ManagedResource<Texture2D>.Create("Characters/Avian.png"));
+            npc.Set(ManagedResource<Texture2D>.Create(Textures.Characters.Aquatic));
         }
         _system =  new SequentialSystem<GameTime>(
             new GameSystem(_world),
