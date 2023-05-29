@@ -41,7 +41,7 @@
             "request": "launch",
             "preLaunchTask": "build-frontend",
             "name": "Frontend - Chrome",
-            "file": "${workspaceFolder}/DawngarFrontend/HelloWeb.html",
+            "file": "${workspaceFolder}/DawngarFrontend/TestCanvas.html",
             "outFiles": [
                 "${workspaceFolder}/DawngarFrontend/out/**/*.js"
             ]
