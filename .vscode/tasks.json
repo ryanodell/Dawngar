@@ -7,11 +7,12 @@
             "command": "echo Building all projects",
             "dependsOn": [
                 "build-game",
-                "build-console"
+                "build-console",
+                "build-frontend"
             ],
             "group": {
                 "kind": "build",
-                "isDefault": true
+                //"isDefault": true
             },
             "problemMatcher": []
         },
@@ -24,6 +25,17 @@
             "label": "build-console",
             "type": "shell",
             "command": "dotnet build DawngarConsole"
+        },
+        {
+            "label": "build-frontend",
+            "type": "typescript",
+            "tsconfig": "DawngarFrontend/tsconfig.json",
+            "problemMatcher": [
+                "$tsc"
+            ],
+            "group": {
+                "kind": "build",
+            }
         }
     ]
   }

@@ -19,10 +19,22 @@
             "preLaunchTask": "build-console",
             "program": "${workspaceFolder}/DawngarConsole/bin/Debug/net6.0/DawngarConsole.dll",
             // "args": ["merge"],
-            "args": ["twoframe"],
+            "args": [
+                "twoframe"
+            ],
             "cwd": "${workspaceFolder}",
             "console": "internalConsole",
             "stopAtEntry": false
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Frontend",
+            "program": "${workspaceFolder}/DawngarFrontend/TestScript.ts",
+            "preLaunchTask": "build-frontend",
+            "outFiles": [
+                "${workspaceFolder}/DawngarFrontend/out/**/*.js"
+            ]
         },
         {
             "name": ".NET Core Attach",
