@@ -13,7 +13,7 @@ img.src = "../Assets/Characters/Cat.png";
 // Camera properties
 let cameraX = 0;
 let cameraY = 0;
-let cameraScale = 1;
+let cameraScale = 3;
 let isDragging = false;
 let dragStartX = 0;
 let dragStartY = 0;
@@ -30,19 +30,20 @@ function updateCamera() {
 function drawScene() {
   // Clear the canvas
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-
+   
   // Update the camera transformations
   updateCamera();
 
   ctx.imageSmoothingEnabled = false;
   
   // Draw objects in the camera space
-  ctx.drawImage(img, 0, 0);
+  ctx.drawImage(img, 1, 1);
+
   const rectX = selectedTileX * tileSize;
   const rectY = selectedTileY * tileSize;
-  ctx.strokeStyle = 'red';
-  ctx.lineWidth = 2;
-  ctx.strokeRect(rectX, rectY, tileSize, tileSize);
+  ctx.strokeStyle = 'black';
+  ctx.lineWidth = 1;
+  ctx.strokeRect(rectX + 1, rectY + 1, tileSize, tileSize);
 }
 
 // Example event handlers for camera movement, zoom, and drag
@@ -100,7 +101,10 @@ canvas.addEventListener('mouseup', (event) => {
 
 canvas.addEventListener('click', (event) => {
     const { x, y } = getWorldCoordinates(event);
-  
+    if(x < 0 || y < 0) 
+    {
+        return;
+    }
     // Calculate selected tile based on the clicked coordinates
     selectedTileX = Math.floor(x / tileSize);
     selectedTileY = Math.floor(y / tileSize);
