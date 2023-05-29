@@ -55,6 +55,11 @@ namespace Dawngar
         //     }
         //     return false;
         // }
+        public bool IsKeyDown(Keys key)
+        {
+            return _currentKeyState.IsKeyDown(key);
+        }
+
         public bool IsKeyPressed(Keys key)
         {
             return _currentKeyState.IsKeyDown(key) && !_previousKeyState.IsKeyDown(key);

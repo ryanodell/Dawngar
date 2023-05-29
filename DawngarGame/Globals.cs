@@ -4,5 +4,5 @@ namespace Dawngar;
 
 public static class Globals 
 {
-    public static Game GameRef;
+    public static MainGame GameRef;
 }
