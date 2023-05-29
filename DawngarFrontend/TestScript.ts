@@ -1,3 +1,2 @@
-
-let message: string = "Hello World";
-console.log(message);
+let message: string  = "Fuuudge";
+document.body.innerHTML = message;

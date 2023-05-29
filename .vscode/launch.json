@@ -37,6 +37,16 @@
             ]
         },
         {
+            "type": "chrome",
+            "request": "launch",
+            "preLaunchTask": "build-frontend",
+            "name": "Frontend - Chrome",
+            "file": "${workspaceFolder}/DawngarFrontend/HelloWeb.html",
+            "outFiles": [
+                "${workspaceFolder}/DawngarFrontend/out/**/*.js"
+            ]
+          },
+        {
             "name": ".NET Core Attach",
             "type": "coreclr",
             "request": "attach"
