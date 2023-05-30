@@ -41,7 +41,7 @@
             "request": "launch",
             "preLaunchTask": "build-frontend",
             "name": "Frontend - Chrome",
-            "file": "${workspaceFolder}/DawngarFrontend/TestCanvas.html",
+            "file": "${workspaceFolder}/DawngarFrontend/AnimationEditor.html",
             "outFiles": [
                 "${workspaceFolder}/DawngarFrontend/out/**/*.js"
             ]
